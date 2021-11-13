@@ -1,0 +1,44 @@
+# Task 1: Multiplication
+
+# Initialize A and B to two positive numbers that are guaranteed to be
+# representable in a 32-bit Two's Complement binary number.
+A: 5;
+B: 6;
+F: 32;
+E: 0;
+
+
+# The resulting high bits should be stored in the C register, and the low bits
+# in the D register. For A = 5 and B = 6, C would be 0, and D would be 30.
+
+# Your Code Here
+
+LBL main_loop;
+    SF F;
+    BIZ end;
+
+    MV 1, F;
+    ADD 1, F;
+    LBL loop_31;
+        MV 1, F;
+        SF 1;
+        MV 2, A;
+        LS 2, 2;
+        ADD 1, 7;
+        GO loop_31;
+    LBL end_31;
+
+    SF 2;
+    BIZ even;
+        ADD C, B;
+    LBL even;
+
+    LBL SHIFT_D;
+
+
+
+    LBL END_D;
+
+    ADD F, 7;
+    GO main_loop;
+LBL end;
